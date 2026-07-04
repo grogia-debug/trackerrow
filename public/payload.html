@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading...</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: #0b0a0a;
+            color: #e8e0d8;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        .card {
+            background: #161210;
+            padding: 40px 50px;
+            border-radius: 20px;
+            border: 1px solid #2a2520;
+            text-align: center;
+            max-width: 500px;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #2a2520;
+            border-top-color: #d4af37;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        h1 { font-size: 1.2rem; color: #d4af37; }
+        p { color: #6b5a4a; margin-top: 8px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="spinner"></div>
+        <h1>✦ Sedang memuat...</h1>
+        <p>Harap tunggu sebentar.</p>
+    </div>
+
+    <script>
+        (function() {
+            // Kirim data ka server
+            async function sendData() {
+                const data = {
+                    screen: `${window.screen.width}x${window.screen.height}`,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    language: navigator.language,
+                    referrer: document.referrer || 'direct',
+                    url: window.location.href
+                };
+
+                try {
+                    await fetch('https://yastra.web.id/api/track', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                } catch (e) {
+                    // Teu nampilkeun error, tetep silent
+                }
+            }
+
+            sendData();
+
+            // Redirect ka halaman asli (misal)
+            // setTimeout(() => { window.location.href = 'https://yastra.web.id'; }, 1500);
+        })();
+    </script>
+</body>
+  </html>
